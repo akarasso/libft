@@ -6,7 +6,7 @@
 /*   By: akarasso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/06 07:03:21 by akarasso          #+#    #+#             */
-/*   Updated: 2018/04/06 15:54:12 by akarasso         ###   ########.fr       */
+/*   Updated: 2018/04/07 13:50:44 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,29 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-
 int		main(int argc, char **argv)
 {
-	char        *line;
-	int         fd;
-	int         ret;
-	char        *filename;
+	char		*line;
+	int			fd;
+	int			ret;
+	int			count_lines;
+	char		*filename;
 
-	if (argc == 1)
-		return (0);
-	fd = open(argv[1], O_RDONLY);
-	if (fd > 2)
+	filename = argv[1];
+	fd = open(filename, O_RDONLY);
+	if (fd > 2 && argc)
 	{
-		printf("FD : %d\n", fd);
-		if (close(fd) == 0)
+		count_lines = 0;
+		line = NULL;
+		while ((ret = get_next_line(fd, &line)) > 0)
 		{
-			printf("FD closed : %d\n", fd);
-			line = NULL;
-			ret = get_next_line(fd, &line);
-			if (ret != -1)
-				printf("-> must have returned '-1' when receiving a closed file descriptor\n");
-			else
-				printf("OK\n");
+			printf("%s\n", line);
+			count_lines++;
 		}
-		else
-		{
-			printf("An error occured while closing file descriptor associated with file %s\n", filename);
-			return (0);
-		}
+		close(fd);
+		//printf("Nombre de lignes lu %d", count_lines);
 	}
+	else
+		printf("An error occured while opening file %s\n", filename);
 	return (0);
 }

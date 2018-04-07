@@ -6,7 +6,7 @@
 /*   By: akarasso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/06 07:04:41 by akarasso          #+#    #+#             */
-/*   Updated: 2018/04/06 14:03:20 by akarasso         ###   ########.fr       */
+/*   Updated: 2018/04/07 13:03:34 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@
 # include <stdio.h>
 # include <unistd.h>
 
-int		get_next_line(const int fd, char **line);
+typedef struct	s_cbuffer
+{
+	int					fd;
+	char				*rd;
+	struct s_cbuffer	*next;
+}				t_cbuffer;
+
+int				get_next_line(const int fd, char **line);
 
 #endif

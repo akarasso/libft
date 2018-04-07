@@ -6,7 +6,7 @@
 /*   By: akarasso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/06 06:56:58 by akarasso          #+#    #+#             */
-/*   Updated: 2018/04/07 13:59:24 by akarasso         ###   ########.fr       */
+/*   Updated: 2018/04/07 13:28:14 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int			fill(char **line, t_cbuffer **c, char *p)
 	canal = *c;
 	if (p)
 	{
-		*line = ft_strnew(p - canal->rd + 1);
+		*line = ft_strnew(p - canal->rd);
 		*line = ft_strncpy(*line, canal->rd, p - canal->rd);
 		canal->rd = ft_memmove(canal->rd, p + 1, ft_strlen(canal->rd));
 		return (1);
@@ -105,6 +105,5 @@ int					get_next_line(const int fd, char **line)
 	}
 	if (cnl->rd && *cnl->rd && ((fill(line, &cnl, ft_strchr(cnl->rd, '\0')))))
 		return (1);
-	*line = 0;
 	return (0);
 }
