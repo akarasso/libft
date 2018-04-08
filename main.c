@@ -6,7 +6,7 @@
 /*   By: akarasso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/06 07:03:21 by akarasso          #+#    #+#             */
-/*   Updated: 2018/04/07 13:50:44 by akarasso         ###   ########.fr       */
+/*   Updated: 2018/04/08 18:50:27 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,70 @@
 
 int		main(int argc, char **argv)
 {
-	char		*line;
-	int			fd;
-	int			ret;
-	int			count_lines;
-	char		*filename;
-
-	filename = argv[1];
-	fd = open(filename, O_RDONLY);
-	if (fd > 2 && argc)
+	char		*line = 0;
+	int			fd1;
+	int			fd2;
+	int			fd3;
+	int			i = 0;
+	int			l = 0;
+	if (argc == 2)
 	{
-		count_lines = 0;
-		line = NULL;
-		while ((ret = get_next_line(fd, &line)) > 0)
+		fd1 = open(argv[1], O_RDONLY);
+		/*get_next_line(fd1, &line);
+		printf("1:%d\n", strcmp(line, "1234567"));
+		free(line);
+		line = 0;
+		get_next_line(fd1, &line);
+		printf("2:%d\n", strcmp(line, "abcdefg"));*/
+		while ((get_next_line(fd1, &line)) > 0)
 		{
 			printf("%s\n", line);
-			count_lines++;
+			l++;
+			printf("l%d", l);
+			if (l > 50)
+				break;
 		}
-		close(fd);
-		//printf("Nombre de lignes lu %d", count_lines);
+		printf("Nombre de ligne %d\n", l);
 	}
-	else
-		printf("An error occured while opening file %s\n", filename);
+	if (argc == 4)
+	{
+		fd1 = open(argv[1], O_RDONLY);
+		fd2 = open(argv[2], O_RDONLY);
+		fd3 = open(argv[3], O_RDONLY);
+		while (i < 50)
+		{
+			if (i % 3 == 0)
+			{
+				get_next_line(fd1, &line);
+				printf("%d:%s\n", fd1, line);
+			}
+			else if(i % 3 == 1) 
+			{
+				get_next_line(fd2, &line);
+				printf("%d:%s\n", fd2, line);
+			}
+			else
+			{
+				get_next_line(fd3, &line);
+				printf("%d:%s\n", fd3, line);
+			}
+			i++;
+			free(line);
+			line = 0;
+		}
+	}
+	/*if (argc == 4)
+	{
+		fd1 = open(argv[1], O_RDONLY);
+		fd2 = open(argv[2], O_RDONLY);
+		fd3 = open(argv[3], O_RDONLY);
+		get_next_line(fd1, &line);
+		get_next_line(fd2, &line);
+		get_next_line(fd3, &line);
+		printf("===========\n");
+		get_next_line(fd1, &line);
+		get_next_line(fd2, &line);
+		get_next_line(fd3, &line);
+	}*/
 	return (0);
 }
