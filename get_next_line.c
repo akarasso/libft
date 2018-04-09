@@ -6,7 +6,7 @@
 /*   By: akarasso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/06 06:56:58 by akarasso          #+#    #+#             */
-/*   Updated: 2018/04/08 19:24:46 by akarasso         ###   ########.fr       */
+/*   Updated: 2018/04/09 07:39:50 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,16 @@ static int			buff_concat(char **line, t_cbuffer *cnl, char c)
 		ft_strcpy(new, *line);
 		ft_strncat(new, cnl->buff, pos - cnl->buff);
 		ft_move(cnl->buff, pos + 1);
-		ft_strdel(line);
+		if (*line)
+			ft_strdel(line);
 		*line = new;
 		return (1);
 	}
 	else
 	{
 		new = ft_strjoin(*line, cnl->buff);
-		ft_strdel(line);
+		if (*line)
+			ft_strdel(line);
 		*line = new;
 		ft_strclr(cnl->buff);
 		return (0);
@@ -87,7 +89,6 @@ int					get_next_line(const int fd, char **line)
 
 	if (fd == -1 || !line || BUFF_SIZE < 1)
 		return (-1);
-	ft_strdel(line);
 	*line = ft_strnew(0);
 	if ((cnl = get_buffer_canal(buffs, fd)) && !buffs)
 		buffs = cnl;
