@@ -28,11 +28,14 @@ int		main(int argc, char **argv)
 	if (argc == 2)
 	{
 		int fd = open(argv[1], O_RDONLY);
+		printf("FD %d\n", fd);
 		while (get_next_line(fd, &line) > 0)
 		{
-			printf("%s\n", line);
+			printf("Ligne%s\n", line);
+			i++;
 			ft_strdel(&line);
 		}
+		printf("Nombre de ligne %d\n", i);
 	}
 	if (argc == 3)
 	{
@@ -72,19 +75,5 @@ int		main(int argc, char **argv)
 			ft_strdel(&line);
 		}
 	}
-	/*
-	 * if (argc == 4)
-	{
-		fd1 = open(argv[1], O_RDONLY);
-		fd2 = open(argv[2], O_RDONLY);
-		fd3 = open(argv[3], O_RDONLY);
-		get_next_line(fd1, &line);
-		get_next_line(fd2, &line);
-		get_next_line(fd3, &line);
-		printf("===========\n");
-		get_next_line(fd1, &line);
-		get_next_line(fd2, &line);
-		get_next_line(fd3, &line);
-	}*/
 	return (0);
 }
