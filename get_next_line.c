@@ -6,7 +6,7 @@
 /*   By: akarasso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/06 06:56:58 by akarasso          #+#    #+#             */
-/*   Updated: 2018/04/13 18:37:02 by akarasso         ###   ########.fr       */
+/*   Updated: 2018/04/16 13:56:36 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,29 @@ static t_cbuffer	*get_buffer_canal(t_cbuffer *lst, const int fd)
 {
 	if (lst)
 	{
-		if (lst->fd == fd)
-			return (lst);
+		//if (lst->fd == fd)
+		//	return (lst);
 		while (lst->next)
 		{
+			printf("Test on value %d %d\n", lst->fd, fd);
 			if (lst->fd == fd)
+			{
+				printf("return\n");
 				return (lst);
+			}
 			lst = lst->next;
 		}
 		lst->next = (t_cbuffer*)ft_memalloc(sizeof(*lst));
-		lst->next->next = 0;
-		lst->next->fd = fd;
-		lst->next->buff[0] = 0;
+		printf("%d point on %d", lst->fd, fd);
 		lst = lst->next;
+		lst->next = 0;
+		lst->fd = fd;
+		lst->buff[0] = 0;
+		printf("Create new canal for fd %d\n", lst->fd);
 	}
 	else
 	{
+		printf("Create new list canal for fd %d\n", fd);
 		lst = (t_cbuffer*)ft_memalloc(sizeof(*lst));
 		lst->next = 0;
 		lst->fd = fd;
@@ -91,19 +98,39 @@ int					get_next_line(const int fd, char **line)
 		return (-1);
 	*line = ft_strnew(0);
 	if ((cnl = get_buffer_canal(buffs, fd)) && !buffs)
+	{
 		buffs = cnl;
+		printf("Set static vars\n");
+	}
 	len = ft_strlen(cnl->buff);
 	if (len > 0)
-		buff_concat(line, cnl, '\n');
+	{
+		if (buff_concat(line, cnl, '\n'))
+		{
+			printf("FD %p\n", cnl);
+			return (1);
+		}
+	}
+	else
+	{
+		printf("EMPTY LEN %p\n", cnl);
+	}
 	while ((ret = read(cnl->fd, cnl->buff, BUFF_SIZE)))
 	{
 		if (ret < 0)
 			return (-1);
 		cnl->buff[ret] = 0;
 		if (buff_concat(line, cnl, '\n'))
+		{
+			printf("Read one line %p fd= %d\n", cnl, cnl->fd);
+			write(1, cnl->buff, ret);
 			return (1);
+		}
 	}
 	if (line && *line && ft_strlen(*line))
+	{
+		printf("Vide le buffer\n");
 		return (1);
+	}
 	return (0);
 }
