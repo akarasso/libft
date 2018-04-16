@@ -6,7 +6,7 @@
 /*   By: akarasso <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/06 06:56:58 by akarasso          #+#    #+#             */
-/*   Updated: 2018/04/09 07:39:50 by akarasso         ###   ########.fr       */
+/*   Updated: 2018/04/13 18:37:02 by akarasso         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int					get_next_line(const int fd, char **line)
 	int					ret;
 	int					len;
 
-	if (fd == -1 || !line || BUFF_SIZE < 1)
+	if (fd < 0 || !line || BUFF_SIZE < 1)
 		return (-1);
 	*line = ft_strnew(0);
 	if ((cnl = get_buffer_canal(buffs, fd)) && !buffs)
