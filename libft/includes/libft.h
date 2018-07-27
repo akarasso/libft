@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akarasso <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hoax <hoax@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 18:17:42 by akarasso          #+#    #+#             */
-/*   Updated: 2018/04/06 17:01:34 by akarasso         ###   ########.fr       */
+/*   Updated: 2018/07/27 19:46:31 by hoax             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# define BUFF_SIZE 1
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -23,6 +24,14 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 
+typedef struct	s_cbuffer
+{
+	int					fd;
+	char				buff[BUFF_SIZE + 1];
+	struct s_cbuffer	*next;
+}				t_cbuffer;
+
+int				get_next_line(const int fd, char **line);
 void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstadd(t_list **alst, t_list *new);

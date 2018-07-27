@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akarasso <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hoax <hoax@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/06 06:56:58 by akarasso          #+#    #+#             */
-/*   Updated: 2018/04/17 09:32:44 by akarasso         ###   ########.fr       */
+/*   Updated: 2018/07/27 22:00:18 by hoax             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 #include "libft.h"
-
+#include <stdio.h>
 static void			ft_move(char *begin, char *end)
 {
 	while (*end)
@@ -32,20 +31,20 @@ static int			buff_concat(char **line, t_cbuffer *cnl, char c)
 	pos = ft_strchr(cnl->buff, c);
 	if (pos)
 	{
-		new = ft_strnew(ft_strlen(*line) + pos - cnl->buff);
-		ft_strcpy(new, *line);
-		ft_strncat(new, cnl->buff, pos - cnl->buff);
-		ft_move(cnl->buff, pos + 1);
-		if (*line)
-			ft_strdel(line);
+		if ((new = ft_strnew(ft_strlen(*line) + pos - cnl->buff)))
+		{
+			ft_strcpy(new, *line);
+			ft_strncat(new, cnl->buff, pos - cnl->buff);
+			ft_move(cnl->buff, pos + 1);
+		}
+		ft_strdel(line);
 		*line = new;
 		return (1);
 	}
 	else
 	{
 		new = ft_strjoin(*line, cnl->buff);
-		if (*line)
-			ft_strdel(line);
+		ft_strdel(line);
 		*line = new;
 		ft_strclr(cnl->buff);
 		return (0);
@@ -64,18 +63,16 @@ static t_cbuffer	*get_buffer_canal(t_cbuffer *lst, const int fd)
 		}
 		if (lst->fd == fd)
 			return (lst);
-		lst->next = (t_cbuffer*)ft_memalloc(sizeof(*lst));
+		if (!(lst->next = (t_cbuffer*)ft_memalloc(sizeof(*lst))))
+			return (0);
 		lst = lst->next;
-		lst->next = 0;
 		lst->fd = fd;
-		lst->buff[0] = 0;
 	}
 	else
 	{
-		lst = (t_cbuffer*)ft_memalloc(sizeof(*lst));
-		lst->next = 0;
+		if (!(lst = (t_cbuffer*)ft_memalloc(sizeof(*lst))))
+			return (0);
 		lst->fd = fd;
-		lst->buff[0] = 0;
 	}
 	return (lst);
 }
@@ -87,24 +84,18 @@ int					get_next_line(const int fd, char **line)
 	int					ret;
 	int					len;
 
-	if (fd < 0 || !line || BUFF_SIZE < 1)
+	if (!(cnl = get_buffer_canal(buffs, fd)) || !(*line = ft_strnew(0)))
 		return (-1);
-	*line = ft_strnew(0);
-	if ((cnl = get_buffer_canal(buffs, fd)) && !buffs)
-		buffs = cnl;
-	len = ft_strlen(cnl->buff);
-	if (len > 0)
+	if ((len = ft_strlen(cnl->buff)) > 0)
 		if (buff_concat(line, cnl, '\n'))
-			return (1);
+			return (line) ? (1) : (-1);
 	while ((ret = read(cnl->fd, cnl->buff, BUFF_SIZE)))
 	{
 		if (ret < 0)
 			return (-1);
 		cnl->buff[ret] = 0;
 		if (buff_concat(line, cnl, '\n'))
-			return (1);
+			return (line) ? (1) : (-1);
 	}
-	if (line && *line && ft_strlen(*line))
-		return (1);
-	return (0);
+	return (line && *line && ft_strlen(*line)) ? 1 : 0;
 }
