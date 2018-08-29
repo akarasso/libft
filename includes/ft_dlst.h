@@ -20,16 +20,16 @@ typedef struct	s_dlst_elem
 	void				*data;
 }				t_dlst_elem;
 
+t_dlst_elem		*ft_dlst_push(t_dlst *container, void *data);
+t_dlst_elem		*ft_dlst_pushback(t_dlst *container, void *data);
+t_dlst_elem		*ft_dlst_new_elem(void *data);
+t_dlst_elem		*ft_dlst_getlast(t_dlst_elem *lst);
+t_dlst			*ft_dlst_new(void *content);
+unsigned int	ft_dlst_len(t_dlst *container);
 void			ft_dlst_del(t_dlst **container, void (*del_elem_func)(void *));
 void			ft_dlst_delif(t_dlst *container, int (*delif_func)(void *), void (*del)(void *));
-int				ft_dlst_push(t_dlst *container, void *data);
-int				ft_dlst_pushback(t_dlst *container, void *data);
 void			ft_dlst_iter(t_dlst *container, void (*exec_func)(void *elem));
-unsigned int	ft_dlst_len(t_dlst *container);
-t_dlst			*ft_dlst_new(void *content);
-t_dlst_elem		*ft_dlst_new_elem(void *data);
 void			ft_dlst_cut(t_dlst_elem *lst, char flag);
-t_dlst_elem		*ft_dlst_getlast(t_dlst_elem *lst);
 void			ft_dlst_delelem(t_dlst_elem **elem, void(*f)(void **data));
 
 #endif

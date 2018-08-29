@@ -10,5 +10,7 @@ char	**ft_strtab_realloc(char ***src, int len);
 void	ft_strtab_free(char ***tab);
 void	ft_strtab_del_one(char **tab, int i);
 void	ft_strtab_print(char **tab);
+int		ft_strtab_find_index(char **tab, char *value);
+int		ft_strtab_findn_index(char **tab, char *value);
 
 #endif

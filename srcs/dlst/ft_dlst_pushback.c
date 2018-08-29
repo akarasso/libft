@@ -12,7 +12,7 @@
 
 #include "ft_dlst.h"
 
-int		ft_dlst_pushback(t_dlst *container, void *data)
+t_dlst_elem		*ft_dlst_pushback(t_dlst *container, void *data)
 {
 	t_dlst_elem	*new;
 	t_dlst_elem	*ptr;
@@ -25,11 +25,13 @@ int		ft_dlst_pushback(t_dlst *container, void *data)
 	else
 	{
 		while (ptr->next)
+		{
 			ptr = ptr->next;
+		}
 		new->prev = ptr;
 		ptr->next = new;
 	}
 	container->last = new;
 	container->len++;
-	return (1);
+	return (new);
 }

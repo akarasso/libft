@@ -17,9 +17,9 @@ unsigned int	ft_lst_len(t_lst *container)
 	unsigned int	len;
 	t_lst_elem		*ptr;
 
+	len = 0;
 	if (container)
 	{
-		len = 0;
 		ptr = container->first;
 		while (ptr)
 		{
