@@ -13,10 +13,10 @@
 #include "ft_lst.h"
 #include "ft_mem.h"
 
-void	ft_lst_del(t_list **container, void (*del_elem_func)(void *))
+void	ft_lst_del(t_lst **container, void (*del_elem_func)(void *))
 {
-	t_list_elem	*ptr;
-	t_list_elem	*tmp;
+	t_lst_elem	*ptr;
+	t_lst_elem	*tmp;
 
 	if (container && *container)
 	{

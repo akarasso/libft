@@ -7,5 +7,8 @@ void	ft_strtab_del(char ***tab);
 int		ft_strtab_len(char **tab);
 char	**ft_strtab_new(int len);
 char	**ft_strtab_realloc(char ***src, int len);
+void	ft_strtab_free(char ***tab);
+void	ft_strtab_del_one(char **tab, int i);
+void	ft_strtab_print(char **tab);
 
 #endif

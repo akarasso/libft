@@ -6,7 +6,7 @@
 /*   By: hoax <hoax@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 18:17:42 by akarasso          #+#    #+#             */
-/*   Updated: 2018/08/27 09:05:29 by hoax             ###   ########.fr       */
+/*   Updated: 2018/08/29 06:41:51 by hoax             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "ft_mem.h"
 # include "ft_read.h"
 # include "ft_str.h"
+# include "ft_ast.h"
 # include "ft_strtab.h"
 
 #endif

@@ -13,9 +13,9 @@
 #include "ft_lst.h"
 #include "ft_mem.h"
 
-static void	ft_del_delif_exec(t_list *container, t_list_elem **tmp, t_list_elem **ptr, void (*del)(void *))
+static void	ft_del_delif_exec(t_lst *container, t_lst_elem **tmp, t_lst_elem **ptr, void (*del)(void *))
 {
-	t_list_elem		*tmp2;
+	t_lst_elem		*tmp2;
 
 	if (*tmp)
 		(*tmp)->next = (*ptr)->next;
@@ -28,10 +28,10 @@ static void	ft_del_delif_exec(t_list *container, t_list_elem **tmp, t_list_elem 
 	container->len--;
 }
 
-void		ft_lst_delif(t_list *container, int (*delif_func)(void *), void (*del)(void *))
+void		ft_lst_delif(t_lst *container, int (*delif_func)(void *), void (*del)(void *))
 {
-	t_list_elem		*ptr;
-	t_list_elem		*tmp;
+	t_lst_elem		*ptr;
+	t_lst_elem		*tmp;
 
 	tmp = 0;
 	ptr = container->first;

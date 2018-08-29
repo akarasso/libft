@@ -12,10 +12,10 @@
 
 #include "ft_dlst.h"
 
-int					ft_dlst_push(t_dlist *container, void *data)
+int					ft_dlst_push(t_dlst *container, void *data)
 {
-	t_dlist_elem	*new;
-	t_dlist_elem	*ptr;
+	t_dlst_elem	*new;
+	t_dlst_elem	*ptr;
 
 	if (!data || !(new = ft_dlst_new_elem(data)))
 		return (0);
@@ -25,7 +25,7 @@ int					ft_dlst_push(t_dlist *container, void *data)
 	else
 	{
 		new->next = container->first;
-		((t_dlist_elem*)container->first)->prev = new;
+		((t_dlst_elem*)container->first)->prev = new;
 		container->first = new;
 	}
 	container->len++;

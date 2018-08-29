@@ -12,9 +12,9 @@
 
 #include "ft_lst.h"
 
-void	ft_lst_iter(t_list *container, void (*exec_func)(void *elem))
+void	ft_lst_iter(t_lst *container, void (*exec_func)(void *elem))
 {
-	t_list_elem *ptr;
+	t_lst_elem *ptr;
 
 	if (!container || !container->first)
 		return ;

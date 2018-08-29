@@ -12,10 +12,10 @@
 
 #include "ft_dlst.h"
 
-int		ft_dlst_pushback(t_dlist *container, void *data)
+int		ft_dlst_pushback(t_dlst *container, void *data)
 {
-	t_dlist_elem	*new;
-	t_dlist_elem	*ptr;
+	t_dlst_elem	*new;
+	t_dlst_elem	*ptr;
 
 	if (!data || !(new = ft_dlst_new_elem(data)))
 		return (0);

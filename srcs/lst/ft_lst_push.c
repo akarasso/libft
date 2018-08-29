@@ -12,10 +12,10 @@
 
 #include "ft_lst.h"
 
-int					ft_lst_push(t_list *container, void *data)
+int					ft_lst_push(t_lst *container, void *data)
 {
-	t_list_elem	*new;
-	t_list_elem	*ptr;
+	t_lst_elem	*new;
+	t_lst_elem	*ptr;
 
 	if (!data || !(new = ft_lst_new_elem(data)))
 		return (0);

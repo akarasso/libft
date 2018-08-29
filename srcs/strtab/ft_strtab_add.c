@@ -5,6 +5,8 @@ int		ft_strtab_add(char ***tab, char *new)
 	int		len;
 	char	**newtab;
 
+	if (!*tab && !(*tab = ft_strtab_new(0)))
+		return (0);
 	len = ft_strtab_len(*tab);
 	if (!new)
 		return (0);

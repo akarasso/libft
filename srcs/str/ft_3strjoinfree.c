@@ -1,6 +1,8 @@
 #include "ft_str.h"
 #include "ft_mem.h"
 
+#include <stdio.h>
+
 char	*ft_3strjoinfree(char *s1, char *s2, char *s3, char flag)
 {
 	char	*new;

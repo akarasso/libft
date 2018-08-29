@@ -12,10 +12,10 @@
 
 #include "ft_dlst.h"
 
-unsigned int	ft_dlst_len(t_dlist *container)
+unsigned int	ft_dlst_len(t_dlst *container)
 {
 	unsigned int	len;
-	t_dlist_elem	*ptr;
+	t_dlst_elem	*ptr;
 
 	if (container)
 	{

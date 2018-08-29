@@ -42,5 +42,7 @@ void	ft_striter(char *s, void (*f)(char *));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 char	*ft_strlastchr(char *s);
 char	*ft_strnjoin(char *src, int lsrc, char *right, char flag);
+void	ft_strrmvchr(char *s);
+char	*ft_strnchr(char *str, char c, int n);
 
 #endif
