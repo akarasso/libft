@@ -6,14 +6,14 @@
 /*   By: hoax <hoax@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 17:56:20 by akarasso          #+#    #+#             */
-/*   Updated: 2018/08/27 06:16:38 by hoax             ###   ########.fr       */
+/*   Updated: 2018/08/30 00:41:00 by hoax             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_mem.h"
 #include "ft_str.h"
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+char	*ft_strsub(char *s, unsigned int start, size_t len)
 {
 	char *new;
 

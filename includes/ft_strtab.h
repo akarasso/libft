@@ -1,6 +1,8 @@
 #ifndef FT_STRTAB_H
 # define FT_STRTAB_H
 
+# include "ft_str.h"
+
 int		ft_strtab_add(char ***tab, char *new);
 void	ft_strtab_cpy(char **src, char **dest);
 void	ft_strtab_del(char ***tab);
@@ -11,6 +13,7 @@ void	ft_strtab_free(char ***tab);
 void	ft_strtab_del_one(char **tab, int i);
 void	ft_strtab_print(char **tab);
 int		ft_strtab_find_index(char **tab, char *value);
-int		ft_strtab_findn_index(char **tab, char *value);
+int		ft_strtab_strncmp_i(char **tab, char *value);
+char	**ft_strtab_dup(char **src);
 
 #endif

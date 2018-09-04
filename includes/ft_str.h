@@ -25,7 +25,7 @@ char	*ft_strnstr(const char *str, const char *find, size_t n);
 char	*ft_strrchr(const char *str, int c);
 char	*ft_strrev(char *s);
 char	*ft_strstr(const char *str, const char *find);
-char	*ft_strsub(char const *s, unsigned int start, size_t len);
+char	*ft_strsub(char *s, unsigned int start, size_t len);
 char	*ft_strtrim(char const *s);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 size_t	ft_strlen(const char *src);
@@ -44,5 +44,6 @@ char	*ft_strlastchr(char *s);
 char	*ft_strnjoin(char *src, int lsrc, char *right, char flag);
 void	ft_strrmvchr(char *s);
 char	*ft_strnchr(char *str, char c, int n);
+int		ft_str_onlychr(char *str, char *valid);
 
 #endif

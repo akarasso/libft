@@ -9,7 +9,7 @@ void	ft_dlst_cut(t_dlst_elem *lst, char flag)
 	}
 	if ((flag & AFTER) && lst->next)
 	{
-		lst->next->next = 0;
+		lst->next->prev = 0;
 		lst->next = 0;	
 	}
 }

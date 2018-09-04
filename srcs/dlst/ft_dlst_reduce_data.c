@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_iter.c                                      :+:      :+:    :+:   */
+/*   ft_dlst_reduce_data.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoax <hoax@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 20:09:53 by akarasso          #+#    #+#             */
-/*   Updated: 2018/08/30 07:32:51 by hoax             ###   ########.fr       */
+/*   Updated: 2018/09/02 07:11:40 by hoax             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_lst.h"
+#include "ft_dlst.h"
 
-void	ft_lst_iter(t_lst *container, void (*exec_func)(t_lst_elem *elem))
+void	ft_dlst_reduce_data(t_dlst *container, void (*exec_func)(void *, void*), void *arg)
 {
-	t_lst_elem *ptr;
+	t_dlst_elem *ptr;
 
 	if (!container || !container->first)
 		return ;
 	ptr = container->first;
 	while (ptr)
 	{
-		exec_func(ptr);
+		exec_func(ptr->data, arg);
 		ptr = ptr->next;
+	}
+}
+
+void	ft_dlstelem_reduce_data(t_dlst_elem *elem, void (*exec_func)(void *, void*), void *arg)
+{
+	if (!elem)
+		return ;
+	while (elem)
+	{
+		exec_func(elem->data, arg);
+		elem = elem->next;
 	}
 }
