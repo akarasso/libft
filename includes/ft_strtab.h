@@ -15,5 +15,7 @@ void	ft_strtab_print(char **tab);
 int		ft_strtab_find_index(char **tab, char *value);
 int		ft_strtab_strncmp_i(char **tab, char *value);
 char	**ft_strtab_dup(char **src);
+void	ft_strtab_cat(char **dest, char **src);
+char	**ft_strtab_3join(char **tab1, char **tab2, char **tab3, char flag);
 
 #endif

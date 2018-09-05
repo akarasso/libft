@@ -6,7 +6,7 @@
 /*   By: hoax <hoax@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 17:53:06 by akarasso          #+#    #+#             */
-/*   Updated: 2018/08/27 06:13:27 by hoax             ###   ########.fr       */
+/*   Updated: 2018/09/04 18:15:32 by hoax             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ char	*ft_strdup(const char *src)
 {
 	char	*new;
 
-	new = (char*)malloc(sizeof(*new) * (ft_strlen(src) + 1));
-	if (!new)
+	if (!src)
+		return (0);
+	if (!(new = (char*)malloc(sizeof(*new) * (ft_strlen(src) + 1))))
 		return (0);
 	ft_strcpy(new, src);
 	return (new);

@@ -25,14 +25,15 @@ SOURCES	= ./srcs/lst/ft_lst_len.c			./srcs/lst/ft_lst_getlast.c		./srcs/lst/ft_l
 	./srcs/str/ft_3strjoinfree.c		./srcs/str/ft_strndup.c			./srcs/str/ft_strnchr.c				\
 	./srcs/char/ft_isalnum.c		./srcs/char/ft_isprint.c		./srcs/char/ft_isascii.c			\
 	./srcs/char/ft_isalpha.c		./srcs/char/ft_isdigit.c		./srcs/strtab/ft_strtab_realloc.c		\
-	./srcs/strtab/ft_strtab_find_index.c	./srcs/strtab/ft_strtab_del_one.c	./srcs/strtab/ft_strtab_dup.c			\
-	./srcs/strtab/ft_strtab_len.c		./srcs/strtab/ft_strtab_print.c		./srcs/strtab/ft_strtab_new.c			\
-	./srcs/strtab/ft_strtab_cpy.c		./srcs/strtab/ft_strtab_del.c		./srcs/strtab/ft_strtab_add.c			\
-	./srcs/strtab/ft_strtab_strncmp_i.c	./srcs/strtab/ft_strtab_free.c		./srcs/integer/ft_itoa.c			\
-	./srcs/integer/ft_nbr_len.c		./srcs/integer/ft_atoi.c		./srcs/mem/ft_memccpy.c				\
-	./srcs/mem/ft_bzero.c			./srcs/mem/ft_memset.c			./srcs/mem/ft_memchr.c				\
-	./srcs/mem/ft_memalloc.c		./srcs/mem/ft_memcmp.c			./srcs/mem/ft_memdel.c				\
-	./srcs/mem/ft_memcpy.c			./srcs/mem/ft_memmove.c			./srcs/read/get_next_line.c			\
+	./srcs/strtab/ft_strtab_find_index.c	./srcs/strtab/ft_strtab_del_one.c	./srcs/strtab/ft_strtab_3join.c			\
+	./srcs/strtab/ft_strtab_dup.c		./srcs/strtab/ft_strtab_len.c		./srcs/strtab/ft_strtab_print.c			\
+	./srcs/strtab/ft_strtab_new.c		./srcs/strtab/ft_strtab_cpy.c		./srcs/strtab/ft_strtab_del.c			\
+	./srcs/strtab/ft_strtab_add.c		./srcs/strtab/ft_strtab_cat.c		./srcs/strtab/ft_strtab_strncmp_i.c		\
+	./srcs/strtab/ft_strtab_free.c		./srcs/integer/ft_itoa.c		./srcs/integer/ft_nbr_len.c			\
+	./srcs/integer/ft_atoi.c		./srcs/mem/ft_memccpy.c			./srcs/mem/ft_bzero.c				\
+	./srcs/mem/ft_memset.c			./srcs/mem/ft_memchr.c			./srcs/mem/ft_memalloc.c			\
+	./srcs/mem/ft_memcmp.c			./srcs/mem/ft_memdel.c			./srcs/mem/ft_memcpy.c				\
+	./srcs/mem/ft_memmove.c			./srcs/read/ft_open_dir.c		./srcs/read/get_next_line.c			\
 	./srcs/read/ft_readdir.c		./srcs/ast/ft_ast_rsplit.c		./srcs/ast/ft_ast_split.c			\
 	./srcs/ast/ft_ast_new.c			./srcs/dlst/ft_dlst_delelem.c		./srcs/dlst/ft_dlst_reduce.c			\
 	./srcs/dlst/ft_dlst_new.c		./srcs/dlst/ft_dlst_reduce_data.c	./srcs/dlst/ft_dlst_iter_data.c			\
