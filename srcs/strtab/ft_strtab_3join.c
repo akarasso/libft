@@ -20,10 +20,10 @@ char	**ft_strtab_3join(char **tab1, char **tab2, char **tab3, char flag)
 	if (tab3)
 		ft_strtab_cat(new, tab3);
 	if (flag & LEFT)
-		ft_strtab_del(&tab1);
+		free(tab1);
 	if (flag & RIGHT)
-		ft_strtab_del(&tab3);
+		free(tab3);
 	if (flag & MID)
-		ft_strtab_del(&tab2);
+		free(tab2);
 	return (new);
 }

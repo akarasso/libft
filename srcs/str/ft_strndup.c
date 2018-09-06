@@ -5,7 +5,9 @@ char	*ft_strndup(char *s, int len)
 {
 	char *new;
 
-	if (!(new = (char *)malloc(sizeof(*new) * (len + 1))))
+	if (!s)
+		return (0);
+	if (!(new = ft_strnew(len)))
 		return (0);
 	ft_strncat(new, s, len);
 	new[len] = 0;

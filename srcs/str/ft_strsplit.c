@@ -6,7 +6,7 @@
 /*   By: hoax <hoax@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 17:55:46 by akarasso          #+#    #+#             */
-/*   Updated: 2018/08/27 06:16:24 by hoax             ###   ########.fr       */
+/*   Updated: 2018/09/05 14:54:13 by hoax             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char		**ft_strsplit(char const *s, char c)
 			if (!(ret[index] = (char*)ft_memalloc(size + 1)))
 				return (0);
 			ret[index] = ft_strncpy(ret[index], s, size);
-			ret[index][size + 1] = '\0';
+			ret[index][size] = '\0';
 			index++;
 			s += size;
 		}

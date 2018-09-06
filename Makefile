@@ -1,4 +1,4 @@
-CC	= gcc
+CC	= gcc -g
 
 CFLAGS	= -Wall -Werror -Wextra
 

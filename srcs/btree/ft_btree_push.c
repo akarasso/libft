@@ -1,8 +1,11 @@
-#include "ft_btree.h"
+#include "libft.h"
 
 static void	btree_add(t_btree *ptr, int (*func_cmp)(void*,void*), t_btree *new)
 {
-	if (func_cmp(ptr->data, new->data) <= 0)
+	int ret;
+
+	ret = func_cmp(ptr->data, new->data);
+	if (ret <= 0)
 	{
 		if (ptr->left)
 			btree_add(ptr->left, func_cmp, new);
