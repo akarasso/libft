@@ -6,13 +6,11 @@
 /*   By: hoax <hoax@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/06 06:56:58 by akarasso          #+#    #+#             */
-/*   Updated: 2018/08/27 06:47:12 by hoax             ###   ########.fr       */
+/*   Updated: 2018/09/10 14:59:53 by hoax             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_str.h"
-#include "ft_mem.h"
-#include "ft_read.h"
+#include "libft.h"
 
 static void			ft_move(char *begin, char *end)
 {
@@ -53,16 +51,15 @@ static int			buff_concat(char **line, t_cbuffer *cnl, char c)
 	}
 }
 
-static t_cbuffer	*get_buffer_canal(t_cbuffer *lst, const int fd)
+static t_cbuffer	*get_buffer_canal(t_cbuffer **canal, const int fd)
 {
+	t_cbuffer	*lst;
+
+	lst = *canal;
 	if (lst)
 	{
-		while (lst->next)
-		{
-			if (lst->fd == fd)
-				return (lst);
+		while (lst->next && lst->fd != fd)
 			lst = lst->next;
-		}
 		if (lst->fd == fd)
 			return (lst);
 		if (!(lst->next = (t_cbuffer*)ft_memalloc(sizeof(*lst))))
@@ -72,8 +69,9 @@ static t_cbuffer	*get_buffer_canal(t_cbuffer *lst, const int fd)
 	}
 	else
 	{
-		if (!(lst = (t_cbuffer*)ft_memalloc(sizeof(*lst))))
+		if (!(*canal = (t_cbuffer*)ft_memalloc(sizeof(*lst))))
 			return (0);
+		lst = *canal;
 		lst->fd = fd;
 	}
 	return (lst);
@@ -86,7 +84,7 @@ int					get_next_line(const int fd, char **line)
 	int					ret;
 	int					len;
 
-	if (!(cnl = get_buffer_canal(buffs, fd)) || !(*line = ft_strnew(0)))
+	if (!(cnl = get_buffer_canal(&buffs, fd)) || !(*line = ft_strnew(0)))
 		return (-1);
 	if ((len = ft_strlen(cnl->buff)) > 0)
 		if (buff_concat(line, cnl, '\n'))

@@ -10,19 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_str.h"
-#include "ft_mem.h"
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *new;
+	char	*new;
+	int		len;
 
-	if (!s1 || !s2)
+	len = (s1) ? ft_strlen(s1) : 0;
+	len += (s2) ? ft_strlen(s2) : 0;
+	if (!(new = ft_strnew(len)))
 		return (0);
-	new = (char*)ft_memalloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!new)
-		return (0);
-	new = ft_strcpy(new, s1);
-	new = ft_strcat(new, s2);
+	if (s1)
+		new = ft_strcat(new, s1);
+	if (s2)
+		new = ft_strcat(new, s2);
 	return (new);
 }

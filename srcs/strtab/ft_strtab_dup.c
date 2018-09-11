@@ -6,6 +6,8 @@ char	**ft_strtab_dup(char **src)
 	int		len;
 	int		i;
 
+	if (!src)
+		return (0);
 	len = ft_strtab_len(src);
 	if (!(new = ft_strtab_new(len)))
 		return (0);
