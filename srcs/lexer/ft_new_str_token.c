@@ -8,7 +8,7 @@ t_str_token		*ft_new_str_token(int type, char **str, void (*go_to)(char**))
 	t_str_token	*new;
 	char		*start;
 
-	if (!str || !*str || !(new = (t_str_token*)malloc(sizeof(*new))))
+	if (!str || !*str || !(new = (t_str_token*)ft_memalloc(sizeof(*new))))
 		return (0);
 	start = *str;
 	go_to(str);

@@ -28,6 +28,7 @@ void	ft_dlst_del(t_dlst **container, void (*del_elem_func)(void *))
 				tmp = ptr->next;
 				if (del_elem_func)
 					del_elem_func(ptr);
+				free(ptr);
 				ptr = tmp;
 			}
 		}
