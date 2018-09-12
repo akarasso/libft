@@ -26,7 +26,7 @@ t_dlst_elem		*ft_dlst_new_elem(void *data);
 t_dlst_elem		*ft_dlst_getlast(t_dlst_elem *lst);
 t_dlst			*ft_dlst_new(void *content);
 unsigned int	ft_dlst_len(t_dlst *container);
-void			ft_dlst_del(t_dlst **container, void (*del_elem_func)(void *));
+void			ft_dlst_del(t_dlst **container, void (*del_elem_func)(t_dlst_elem *));
 void			ft_dlst_delif(t_dlst *container, int (*delif_func)(void *), void (*del)(void *));
 void			ft_dlst_cut(t_dlst_elem *lst, char flag);
 void			ft_dlst_delelem(t_dlst *container, t_dlst_elem **elem, void(*f)(void *data));
