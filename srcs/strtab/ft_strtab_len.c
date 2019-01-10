@@ -1,14 +1,14 @@
-int		ft_strtab_len(char **tab)
+int		ft_strtab_len(char **arr)
 {
 	int	len;
 
 	len = 0;
-	if (tab)
+	if (arr)
 	{
-		while (*tab)
+		while (*arr)
 		{
 			len++;
-			tab++;
+			arr++;
 		}
 	}
 	return (len);

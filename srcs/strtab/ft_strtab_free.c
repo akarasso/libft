@@ -1,15 +1,15 @@
 #include "ft_mem.h"
 
-void	ft_strtab_free(char ***tab)
+void	ft_strtab_free(char ***arr)
 {
 	int		i;
 
 	i = 0;
-	while ((*tab)[i])
+	while ((*arr)[i])
 	{
-		free((*tab)[i]);
+		free((*arr)[i]);
 		i++;
 	}
-	free(*tab);
-	*tab = 0;
+	free(*arr);
+	*arr = 0;
 }

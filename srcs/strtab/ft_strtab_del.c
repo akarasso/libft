@@ -2,14 +2,14 @@
 #include "ft_mem.h"
 #include "ft_str.h"
 
-void	ft_strtab_del(char ***tab)
+void	ft_strtab_del(char ***arr)
 {
 	int		i;
 	char	**ptr;
 
-	if (tab && *tab)
+	if (arr && *arr)
 	{
-		ptr = *tab;
+		ptr = *arr;
 		i = 0;
 		while (ptr[i])
 		{
@@ -17,6 +17,6 @@ void	ft_strtab_del(char ***tab)
 			i++;
 		}
 		free(ptr);
-		*tab = 0;
+		*arr = 0;
 	}
 }

@@ -1,13 +1,13 @@
 #include "ft_io.h"
 
-void	ft_strtab_print(char **tab)
+void	ft_strtab_print(char **arr)
 {
 	int i;
 
 	i = 0;
-	while (tab[i])
+	while (arr[i])
 	{
-		ft_putendl(tab[i]);
+		ft_putendl(arr[i]);
 		i++;
 	}
 }

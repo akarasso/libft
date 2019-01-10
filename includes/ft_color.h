@@ -39,4 +39,7 @@
 # define BGCYAN		"\033[46m"
 # define BGWHITE	"\033[47m"
 
+# define REVCOLOR	"\033[7m"
+# define UNDERLINED	"\033[4m"
+
 #endif

@@ -1,14 +1,14 @@
 #include "ft_mem.h"
 #include "ft_str.h"
 
-void	ft_strtab_del_one(char **tab, int index)
+void	ft_strtab_del_one(char **arr, int index)
 {
-	free(tab[index]);
+	free(arr[index]);
 	index++;
-	while (tab[index])
+	while (arr[index])
 	{
-		tab[index - 1] = tab[index];
+		arr[index - 1] = arr[index];
 		index++;
 	}
-	tab[index - 1] = 0;
+	arr[index - 1] = 0;
 }

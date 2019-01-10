@@ -1,15 +1,15 @@
 #include "ft_strtab.h"
 
-int		ft_strtab_find_index(char **tab, char *value)
+int		ft_strtab_find_index(char **arr, char *value)
 {
 	int i;
 
 	i = 0;
-	if (!tab)
+	if (!arr)
 		return (-1);
-	while (tab[i])
+	while (arr[i])
 	{
-		if (!ft_strcmp(tab[i], value))
+		if (!ft_strcmp(arr[i], value))
 			return (i);
 		i++;
 	}
